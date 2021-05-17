@@ -1,8 +1,14 @@
-## Python XML Parsing Exercise
-Small python script written to parse and standardize XML files into JSON, written for Gordian Software. 
+# Python XML Parsing Exercise
+Small python script to parse seatmap XML files into standardized JSON, written as an exercise for Gordian Software. 
+
+Notes:
+- Did not spend time architecting everything to accept additonal file formats, for readability and execution speed I assumed these were the only two types. 
+- Lots of assumptions baked in due to not having additional examples from each source 
+- - E.g. IATA file had no indicator of cabin class so assumed standard economy but would do more research in real life setting
+- Only included a few of the common seat characterstics - would ultimately be a business decision for what characteristics you want included in output
 
 
-### The instructions
+## The exercise instructions
 
 Seatmap Availability Exercise:
 

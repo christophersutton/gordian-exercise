@@ -6,7 +6,7 @@ import lib.helpers
 
 def get_price(seat_node, ns):
     priceNode = seat_node.find(".//ns:Fee", ns)
-    # Assuming for this exercise based on file that all prices given in centavos 
+    # Assuming for this exercise based on file that all prices given in centavos
     price_in_centavos = int(priceNode.get("Amount"))
     currency_code = priceNode.get("CurrencyCode")
     display_price = lib.helpers.getDisplayPrice(price_in_centavos, currency_code)
