@@ -1,11 +1,11 @@
 import os, sys, argparse, json
 import xml.etree.ElementTree as ET
+
 # import project functions
 import lib.helpers, lib.opentravel, lib.iata
 
 
 def main():
-
     def construct_layout(cabin_node):
         if source == OPENTRAVEL:
             return lib.opentravel.construct_layout(cabin_node, ns)
@@ -24,9 +24,9 @@ def main():
                 else int(row.find("./Number", ns).text)
             )
 
-            # Need to see other examples from IATA to determine how they're 
+            # Need to see other examples from IATA to determine how they're
             # defnining cabin class, for now defaulting to economy for IATA
-            cabin_class = row.get("CabinType") if source == OPENTRAVEL else "Economy"
+            cabin_class = row.get("CabinType").lower() if source == OPENTRAVEL else "economy"
 
             for seat_node in row.iterfind(f"./{seat_xpath}", ns):
                 if source == OPENTRAVEL:
@@ -89,7 +89,7 @@ def main():
     print("#### Parsing File")
     tree = ET.parse(file)
     root = tree.getroot()
-    
+
     # create our seatmap
     sections = []
     for seatmap in root.iterfind(f".//{seatmap_xpath}", ns):
@@ -110,7 +110,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-### todo:
-### line 58 seatmap1, lavatory, line 76 bulkhead
